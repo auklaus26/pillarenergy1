@@ -101,7 +101,7 @@ export default function HomePage() {
             <div className="mt-10">
               <Link
                 href="/projects"
-                className="inline-flex min-h-14 items-center justify-center bg-[var(--surface-white)] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-[var(--primary)] transition-all hover:bg-[var(--surface-high)]"
+                className="inline-flex min-h-14 items-center justify-center bg-[var(--primary)] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-white transition-all hover:bg-[var(--primary-soft)] hover:text-[var(--foreground)]"
               >
                 View Projects
               </Link>
