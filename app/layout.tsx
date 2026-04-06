@@ -1,23 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Work_Sans } from "next/font/google";
 
 import "./globals.css";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site-content";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap"
-});
-
-const workSans = Work_Sans({
-  subsets: ["latin"],
-  variable: "--font-headline",
-  display: "swap"
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pillarenergy.com.au"),
@@ -41,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${workSans.variable}`}>
-      <body className="font-[var(--font-body)] text-[var(--foreground)] antialiased">
+    <html lang="en">
+      <body className="text-[var(--foreground)] antialiased">
         <SiteHeader navItems={siteConfig.navigation} />
         {children}
         <SiteFooter />

@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 
 import { siteConfig } from "@/content/site-content";
+import { contactSchema } from "@/lib/contact";
 
 type FormState = {
   status: "idle" | "success" | "error";
@@ -24,36 +25,43 @@ export function ContactForm() {
 
         startTransition(async () => {
           setState(initialState);
+          const payload = {
+            fullName: String(formData.get("fullName") ?? ""),
+            organization: String(formData.get("organization") ?? ""),
+            email: String(formData.get("email") ?? ""),
+            category: String(formData.get("category") ?? ""),
+            message: String(formData.get("message") ?? ""),
+            consent: formData.get("consent") === "on"
+          };
 
-          const response = await fetch("/api/contact", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              fullName: formData.get("fullName"),
-              organization: formData.get("organization"),
-              email: formData.get("email"),
-              category: formData.get("category"),
-              message: formData.get("message"),
-              consent: formData.get("consent") === "on"
-            })
-          });
+          const parsed = contactSchema.safeParse(payload);
 
-          const result = (await response.json()) as { message?: string };
-
-          if (response.ok) {
+          if (!parsed.success) {
             setState({
-              status: "success",
-              message: result.message ?? "Your enquiry has been submitted."
+              status: "error",
+              message: parsed.error.issues[0]?.message ?? "Invalid submission."
             });
-            event.currentTarget.reset();
             return;
           }
 
+          const subject = encodeURIComponent(`Pillar Energy enquiry: ${parsed.data.category}`);
+          const body = encodeURIComponent(
+            [
+              `Name: ${parsed.data.fullName}`,
+              `Organisation: ${parsed.data.organization || "-"}`,
+              `Email: ${parsed.data.email}`,
+              `Category: ${parsed.data.category}`,
+              "",
+              "Project detail:",
+              parsed.data.message
+            ].join("\n")
+          );
+
+          window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+
           setState({
-            status: "error",
-            message: result.message ?? "Submission failed."
+            status: "success",
+            message: "Your email client should open with the enquiry prefilled."
           });
         });
       }}

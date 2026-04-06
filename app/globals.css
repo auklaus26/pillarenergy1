@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500;700;800;900&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -38,6 +39,7 @@ body {
     radial-gradient(circle at top left, rgba(146, 204, 255, 0.18), transparent 30%),
     linear-gradient(180deg, #f9fbff 0%, #f7f9ff 48%, #eef5ff 100%);
   color: var(--foreground);
+  font-family: "Inter", sans-serif;
 }
 
 a {
