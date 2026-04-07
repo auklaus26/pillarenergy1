@@ -70,7 +70,7 @@ export default function HomePage() {
             />
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 font-[var(--font-headline)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)]"
+              className="text-link"
             >
               View all services
               <ArrowRight className="h-4 w-4" />
@@ -101,7 +101,7 @@ export default function HomePage() {
             <div className="mt-10">
               <Link
                 href="/projects"
-                className="inline-flex min-h-14 items-center justify-center bg-[var(--primary)] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-white transition-all hover:bg-[var(--primary-soft)] hover:text-[var(--foreground)]"
+                className="btn-base btn-primary"
               >
                 View Projects
               </Link>
@@ -121,13 +121,13 @@ export default function HomePage() {
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="inline-flex min-h-14 items-center justify-center bg-[linear-gradient(135deg,var(--primary),var(--primary-strong))] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-white"
+              className="btn-base btn-primary"
             >
               Contact Us
             </Link>
             <Link
               href="/about"
-              className="inline-flex min-h-14 items-center justify-center border-2 border-[var(--primary)] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-[var(--primary)]"
+              className="btn-base btn-secondary"
             >
               About Us
             </Link>

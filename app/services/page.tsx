@@ -29,7 +29,7 @@ export default function ServicesPage() {
             <Link
               key={service.id}
               href={`#${service.id}`}
-              className="bg-[var(--surface-white)] p-8 transition-colors hover:bg-[var(--primary)] hover:text-white"
+              className="bg-[var(--surface-white)] p-8 transition-colors duration-200 hover:bg-[var(--primary)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]"
             >
               <div className="font-[var(--font-headline)] text-sm font-black uppercase tracking-[0.16em]">
                 {service.title}

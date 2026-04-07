@@ -11,8 +11,16 @@ type SiteHeaderProps = {
   navItems: NavItem[];
 };
 
+function normalizePath(path: string) {
+  if (path === "/") {
+    return path;
+  }
+
+  return path.replace(/\/+$/, "");
+}
+
 export function SiteHeader({ navItems }: SiteHeaderProps) {
-  const pathname = usePathname();
+  const pathname = normalizePath(usePathname());
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,7 +31,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
-            const active = pathname === item.href;
+            const active = pathname === normalizePath(item.href);
             return (
               <Link
                 key={item.href}
@@ -31,8 +39,9 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                 className={`font-[var(--font-headline)] text-[0.76rem] font-semibold uppercase tracking-[0.18em] transition-colors ${
                   active
                     ? "border-b-2 border-[var(--primary)] pb-1 text-[var(--primary)]"
-                    : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                    : "border-b-2 border-transparent pb-1 text-[var(--muted)] hover:border-[var(--primary)] hover:text-[var(--foreground)]"
                 }`}
+                aria-current={active ? "page" : undefined}
               >
                 {item.label}
               </Link>
@@ -42,26 +51,28 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
         <div className="flex items-center gap-4">
           <Link
             href="/zh"
-            className="border border-[var(--outline)] px-3 py-2 font-[var(--font-headline)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[var(--primary)] transition-colors hover:border-[var(--primary)] hover:bg-[var(--surface-low)]"
+            className="header-utility"
           >
             中文
           </Link>
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center border border-[var(--outline)] text-[var(--foreground)] md:hidden"
-            onClick={() => setOpen((value) => !value)}
-            aria-label="Toggle menu"
-            aria-expanded={open}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="md:hidden">
+            <button
+              type="button"
+              className="icon-button"
+              onClick={() => setOpen((value) => !value)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </div>
       {open ? (
         <div className="border-t border-[var(--outline)] bg-[var(--surface-white)] md:hidden">
           <div className="grid-shell space-y-3 py-4">
             {navItems.map((item) => {
-              const active = pathname === item.href;
+              const active = pathname === normalizePath(item.href);
               return (
                 <Link
                   key={item.href}

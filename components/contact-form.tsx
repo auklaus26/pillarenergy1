@@ -113,7 +113,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-14 items-center justify-center bg-[linear-gradient(135deg,var(--primary),var(--primary-strong))] px-10 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-white transition-all hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
+          className="btn-base btn-primary px-10"
         >
           {isPending ? "Submitting..." : "Submit Engineering Request"}
         </button>

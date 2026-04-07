@@ -24,13 +24,13 @@ export default function ChinesePage() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex min-h-14 items-center justify-center bg-[linear-gradient(135deg,var(--primary),var(--primary-strong))] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-white"
+                className="btn-base btn-primary"
               >
                 联系我们
               </Link>
               <Link
                 href="/"
-                className="inline-flex min-h-14 items-center justify-center border-2 border-[var(--primary)] px-8 font-[var(--font-headline)] text-xs font-black uppercase tracking-[0.18em] text-[var(--primary)]"
+                className="btn-base btn-secondary"
               >
                 English
               </Link>

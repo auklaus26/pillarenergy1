@@ -56,12 +56,12 @@ export function PageHero({
                   <Link
                     key={action.href}
                     href={action.href}
-                    className={`inline-flex min-h-14 items-center justify-center px-8 font-[var(--font-headline)] text-xs font-bold uppercase tracking-[0.18em] transition-all ${
+                    className={`btn-base ${
                       primary
-                        ? "bg-[linear-gradient(135deg,var(--primary),var(--primary-strong))] text-white hover:brightness-105"
+                        ? "btn-primary"
                         : dark
-                          ? "border-2 border-[var(--primary)] text-white hover:bg-[rgba(0,97,147,0.14)]"
-                          : "border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--surface-white)]"
+                          ? "btn-secondary-dark"
+                          : "btn-secondary"
                     }`}
                   >
                     {action.label}

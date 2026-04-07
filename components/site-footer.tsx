@@ -26,7 +26,7 @@ export function SiteFooter() {
           <div className="space-y-3 text-sm text-[var(--muted)]">
             {siteConfig.navigation.map((item) => (
               <div key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-[var(--foreground)]">
+                <Link href={item.href} className="footer-link">
                   {item.label}
                 </Link>
               </div>
