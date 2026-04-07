@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const isGithubPages = process.env.GITHUB_ACTIONS === "true";
 const repoName = "pillarenergy1";
+const useRepoBasePath = process.env.USE_REPO_BASE_PATH === "true";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   trailingSlash: true,
-  basePath: isGithubPages ? `/${repoName}` : "",
-  assetPrefix: isGithubPages ? `/${repoName}/` : undefined
+  basePath: useRepoBasePath ? `/${repoName}` : "",
+  assetPrefix: useRepoBasePath ? `/${repoName}/` : undefined
 };
 
 export default nextConfig;
