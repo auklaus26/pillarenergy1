@@ -31,6 +31,7 @@ next-env.d.ts
 # misc
 .DS_Store
 Thumbs.db
+/design_pillar_energy
 
 # editor
 .vscode/
