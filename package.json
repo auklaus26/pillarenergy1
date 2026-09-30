@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "base64 -d site-source.tar.gz.b64 | tar -xz",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
